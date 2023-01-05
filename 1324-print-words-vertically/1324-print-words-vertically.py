@@ -3,11 +3,11 @@ class Solution:
         words = s.split(' ')
         max_len = max(len(word) for word in words)
         res = []
-        for i in range(max_len):
-            l = []
+        for indx in range(max_len):
+            column_word = []
             for word in words:
-                l.append(word[i] if i < len(word) else ' ')
-            res.append(''.join(l).rstrip())
+                column_word.append(word[indx] if indx < len(word) else ' ')
+            res.append(''.join(column_word).rstrip())
         return res
     
     
