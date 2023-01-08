@@ -9,7 +9,7 @@ def calculate_shirt_size(shirt):
         else:
             shirt_size = hash_map['S'] - shirt_size
     else:
-        shirt_size += hash_map[shirt]
+        shirt_size += hash_map[shirt] 
     return shirt_size
 
 N = int(input())
