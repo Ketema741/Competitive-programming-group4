@@ -15,4 +15,3 @@ class Solution:
             left_nums.append(pivot)
         left_nums.extend(right_nums)
         return left_nums
-                
