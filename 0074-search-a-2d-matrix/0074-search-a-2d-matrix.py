@@ -9,7 +9,9 @@ class Solution:
                     return True
             return False
 """
-n = len(matrix)
-Time complexity = O(n)
-space complexity = O(1)
+    n = len(matrix)
+    m = len(matrix[0])
+    
+    Time complexity = O(n + m)
+    space complexity = O(1)
 """
