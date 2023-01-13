@@ -23,6 +23,7 @@ for _ in range(test_num):
     # calculate diagonal sum at a given point buy adding  forward and backward diagonal 
     for row in range(rows):
         for col in range(cols):
-            sum_ = diff_hash_map[(col-row)] + sum_hash_map[(col+row)] - input_[row][col]
+            # because we counted input_[row][col] twice remove it once
+            sum_ = diff_hash_map[(col-row)] + sum_hash_map[(col+row)] - input_[row][col] 
             max_ = max(max_, sum_)
     print(max_)
