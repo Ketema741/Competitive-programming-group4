@@ -1,21 +1,16 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-       # Check rows
-        for row in board:
-            seen = set()
-            for num in row:
-                if num != '.' and num in seen:
-                    return False
-                seen.add(num)
-
-        # Check columns
-        for i in range(len(board)):
-            seen = set()
-            for row in board:
-                num = row[i]
-                if num != '.' and num in seen:
-                    return False
-                seen.add(num)
+        rows, cols = len(board), len(board[0])
+        hash_map = defaultdict(list)
+        for row in range(rows):
+            for col in range(cols):
+                if board[row][col] != '.':
+                    hash_map[(row, 'r')].append(board[row][col])
+                    hash_map[(col, 'c')].append(board[row][col])
+                    
+        for values in hash_map.values():
+            if len(values) != len(set(values)):
+                return False
 
 
         # Check 3x3 boxes
