@@ -1,7 +1,6 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         if not matrix:  return []
-        
         rows, cols = len(matrix), len(matrix[0])
         res = []
         left, right = 0, cols - 1
