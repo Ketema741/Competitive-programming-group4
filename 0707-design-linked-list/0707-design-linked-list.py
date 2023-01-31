@@ -2,6 +2,7 @@ class ListNode:
     def __init__(self, val):
         self.val = val
         self.next = None
+        
 class MyLinkedList(object):
     def __init__(self):
         self.head = None
@@ -11,12 +12,12 @@ class MyLinkedList(object):
         if index < 0 or index >= self.size:
             return -1
 
-        current = self.head
+        dummy = self.head
 
         for _ in range(0, index):
-            current = current.next
+            dummy = dummy.next
 
-        return current.val
+        return dummy.val
 
     def addAtHead(self, val: int) -> None:
         self.addAtIndex(0, val)
@@ -28,17 +29,19 @@ class MyLinkedList(object):
         if index > self.size:
             return
 
-        current = self.head
+        dummy = self.head
+        
         new_node = ListNode(val)
 
         if index <= 0:
-            new_node.next = current
+            new_node.next = dummy
             self.head = new_node
         else:
             for _ in range(index - 1):
-                current = current.next
-            new_node.next = current.next
-            current.next = new_node
+                dummy = dummy.next
+            
+            new_node.next = dummy.next
+            dummy.next = new_node
 
         self.size += 1
 
@@ -46,13 +49,13 @@ class MyLinkedList(object):
         if index < 0 or index >= self.size:
             return
 
-        current = self.head
+        dummy = self.head
 
         if index == 0:
             self.head = self.head.next
         else:
             for _ in range(0, index - 1):
-                current = current.next
-            current.next = current.next.next
+                dummy = dummy.next
+            dummy.next = dummy.next.next
 
         self.size -= 1
