@@ -1,8 +1,8 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        
-        right = len(numbers)-1
+        right = len(numbers) - 1
         left = 0
+        
         while left < right:
             two_sum = numbers[left] + numbers[right]
             
