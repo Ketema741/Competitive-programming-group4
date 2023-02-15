@@ -6,4 +6,3 @@ class Solution:
        
         if res:
             return res[0]
-        return 0
