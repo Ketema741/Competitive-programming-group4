@@ -9,20 +9,23 @@ class Solution:
         if not head or not head.next or left == right:
             return head
         
-        dummy = ListNode(-1)
-        dummy.next = head
-        pre = dummy
-        
-        # move pre to the node before the left-th node
-        for _ in range(left - 1):
+
+        dummyNode = ListNode(0)
+        dummyNode.next = head
+        pre = dummyNode
+
+        for i in range(left - 1):
             pre = pre.next
         
-        # reverse the nodes between left and right
+        reverse = None
         cur = pre.next
-        for _ in range(right - left):
-            temp = cur.next
-            cur.next = temp.next
-            temp.next = pre.next
-            pre.next = temp
-        
-        return dummy.next
+        for i in range(right - left + 1):
+            next = cur.next
+            cur.next = reverse
+            reverse = cur
+            cur = next
+
+        pre.next.next = cur
+        pre.next = reverse
+
+        return dummyNode.next
