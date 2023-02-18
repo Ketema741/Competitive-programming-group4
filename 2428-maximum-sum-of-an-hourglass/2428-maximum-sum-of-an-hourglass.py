@@ -4,6 +4,7 @@ class Solution:
         res = 0
         
         for i in range(R - 2):
+            
             for j in range(C - 2):
                 sum_ = 0
                 
