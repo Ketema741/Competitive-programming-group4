@@ -6,7 +6,25 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        slow = fast = head
+        seen = set()
+        
+        while head and head.next:
+            if head in seen:
+                return True
+            
+            seen.add(head)
+            head = head.next
+            
+        return False
+        
+        
+        
+        
+        
+        
+        
+"""
+slow = fast = head
         
         while fast and fast.next:
             slow = slow.next
@@ -17,3 +35,4 @@ class Solution:
         
         return False
         
+"""
