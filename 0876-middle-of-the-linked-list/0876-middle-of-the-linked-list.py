@@ -6,16 +6,15 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         curr = head
-        fast = head
+        dummy = head
         count = 0
         while curr:
             curr = curr.next
             count += 1
-        middle = math.floor(count / 2)
+        middle = count // 2
         
         while middle:
-            fast = fast.next
+            dummy = dummy.next
             middle -= 1
         
-        
-        return fast
+        return dummy
