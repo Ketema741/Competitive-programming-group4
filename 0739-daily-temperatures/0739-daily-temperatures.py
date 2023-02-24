@@ -5,11 +5,11 @@ class Solution:
         
         for right, num in enumerate(temperatures):
             
-            while stack and num > stack[-1][0]:
-                temp, left = stack.pop()
+            while stack and num > temperatures[stack[-1]]:
+                left = stack.pop()
                 res[left] = right - left
             
-            stack.append((num, right))
+            stack.append(right)
             
         return res
         
