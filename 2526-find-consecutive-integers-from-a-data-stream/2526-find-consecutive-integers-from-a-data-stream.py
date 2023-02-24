@@ -10,12 +10,9 @@ class DataStream:
             self.N += 1   
         else:
             self.N = 0
+            
         return self.N >= self.k
             
-            
-           
-            
-
 
 # Your DataStream object will be instantiated and called as such:
 # obj = DataStream(value, k)
