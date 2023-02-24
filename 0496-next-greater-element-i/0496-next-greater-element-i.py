@@ -21,6 +21,7 @@ class Solution:
     """
         nums1Indx = {n:i for i, n in enumerate(nums1)}
         ans = [-1]*len(nums1)
+        
         for i in range(len(nums2)-1):
             if nums2[i] not in nums1:
                 continue
