@@ -1,22 +1,37 @@
 class Solution:
-    def decodeString(self, s: str) -> str:
-        stack, res = [], []
-        
-        for i in range(len(s)):
-            if s[i] != ']':
-                stack.append(s[i])
+    
+    def __init__(self):
+        self.idx = 0
+            
+    def decode(self, s, mult=1) -> str:
+        curnt_str = ''
+
+        while self.idx < len(s):
+            if s[self.idx].isdigit():
+                curnt_mult = ''
+
+                while s[self.idx].isdigit():
+                    curnt_mult += s[self.idx]
+                    self.idx += 1
+
+                self.idx += 1
+                curnt_str += self.decode(s, mult = int(curnt_mult))
+
+            elif s[self.idx].isalpha():
+                curnt_str += s[self.idx]
+                self.idx += 1
+
             else:
-                string = ''
-                
-                while stack[-1] !='[':
-                    string = stack.pop() + string
-                
-                stack.pop()
-                k = ''
-                
-                while stack and stack[-1].isdigit():
-                    k = stack.pop() + k
-                    
-                stack.append(int(k)*string)
-                
-        return '' if stack[0].isdigit() else ''.join(stack) 
+                self.idx += 1
+                return mult*curnt_str
+
+        return mult*curnt_str
+
+        
+        
+    def decodeString(self, s: str) -> str:
+        if len(s) == 1:
+            return '' if s[0].isdigit() else s[0]            
+        res = self.decode(s)
+        
+        return res
