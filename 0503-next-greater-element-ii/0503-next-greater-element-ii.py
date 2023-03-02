@@ -5,7 +5,7 @@ class Solution:
         stack = []
         
         for i in range(2*N - 1, -1, -1):
-            while stack and nums[stack[-1]] <= nums[i % len(nums)]:
+            while stack and nums[stack[-1]] <= nums[i % N]:
                 stack.pop()
             
             if stack:
