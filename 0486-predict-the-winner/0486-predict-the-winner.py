@@ -4,8 +4,14 @@ class Solution:
             if l > r: return 0
             
             if player: 
-                return max(nums[l]+ turn(l + 1, r, not player), nums [r] + turn(l, r-1, not player)) 
+                score1 = nums[l] + turn(l + 1, r, not player)
+                score2 = nums[r] + turn(l, r - 1, not player)
+                
+                return max(score1, score2) 
             else: 
-                return min(-nums[l]+ turn(l + 1, r, not player), -nums[r] + turn(l, r-1, not player))
-            
+                score1 = -nums[l] + turn(l + 1, r, not player)
+                score2 = -nums[r] + turn(l, r - 1, not player)
+                
+                return min(score1, score2)
+           
         return turn(0, len(nums) -1, True) >= 0
