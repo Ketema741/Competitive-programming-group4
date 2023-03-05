@@ -1,14 +1,10 @@
-class Solution:
-    def divideByThree(self, num):
-        if num == 1:
-            return True
-
-        if num < 1:
-            return False
-
-        return self.divideByThree(num/3)
+class Solution:        
         
     def isPowerOfThree(self, n: int) -> bool:
-        res = self.divideByThree(n)
-        
-        return res
+        if n == 1:
+            return True
+
+        if n < 1 or n % 3 != 0:
+            return False
+
+        return self.isPowerOfThree(n/3)
