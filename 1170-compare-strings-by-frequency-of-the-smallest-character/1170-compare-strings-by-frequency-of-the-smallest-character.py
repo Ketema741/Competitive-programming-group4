@@ -7,7 +7,6 @@ class Solution:
         query_list = [f(query) for query in queries]
         word_list = [f(word) for word in words]
 
-        print(query_list, word_list)
 
         res = []
         for query in query_list:
