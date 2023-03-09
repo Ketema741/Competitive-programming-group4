@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        queue = [(root, 0, 0)]
+        queue = [(root, 1, 1)]
         
         cur_depth = left = width = 0
         
