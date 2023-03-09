@@ -18,6 +18,6 @@ class Solution:
                     pre_min = min(pre_min, current_min)
                     bucket[j] -= cookies[i]
             return pre_min
-        
+        cookies.sort(reverse=True)
         return backtrack(0)
                 
