@@ -5,11 +5,7 @@ from dataclasses import dataclass
 #         self.val = val
 #         self.left = left
 #         self.right = right
-@dataclass
-class Node:
-    val: int
-    row: int
-    col: int
+
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         queue = deque([(root, 0, 0)])
@@ -32,6 +28,6 @@ class Solution:
         
         res = []
         for col in col_dict:
-            res.append([val for row, val in sorted(col_dict[col], key=lambda x: (x[0],x[1]))])
+            res.append([val for row, val in sorted(col_dict[col], key=lambda x: (x[0], x[1]))])
         
         return res
