@@ -19,11 +19,3 @@ class Solution:
             return min_ and max_
         
         return valid(root, float('-inf'), float('inf'))
-    
-    
-    """
-    valid(5, -inf, +inf)
-    left = valid(1, -inf, 5)
-    left = valid(6, 1, 5)
-    right = (6, 1, 5)
-    """
