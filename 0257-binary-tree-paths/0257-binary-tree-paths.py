@@ -9,23 +9,29 @@ class Solution:
         res, current_path = [], []
         
         def backtrack(root):
+            
+            # base case
             if not root:
                 return
             
-        
+            # check if results is found
             if not root.left and not root.right:
                 current_path.append(str(root.val))
                 res.append('->'.join(current_path))
-                current_path.pop()
+                current_path.pop() 
                 return 
             
-            current_path.append(str(root.val))
-            backtrack(root.left)
-            backtrack(root.right)
-            current_path.pop()
+            for i in range(2):
+                current_path.append(str(root.val)) # choose
+
+                # explore left  or right path
+                if i == 1: 
+                    backtrack(root.left) 
+                else: 
+                    backtrack(root.right)
+                    
+                current_path.pop() # unchoose
             
         backtrack(root)
         
         return res
-
-        
