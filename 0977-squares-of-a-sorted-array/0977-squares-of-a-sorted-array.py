@@ -5,12 +5,13 @@ class Solution:
         left, right = 0, len(nums) - 1
         
         while left <= right:
+            leftSqr, rightSqr = nums[left]**2, nums[right]**2
             
-            if nums[left]**2 < nums[right]**2:
-                res.append(nums[right]**2)
+            if leftSqr < rightSqr:
+                res.append(rightSqr)
                 right -= 1
             else:
-                res.append(nums[left]**2)
+                res.append(leftSqr)
                 left += 1
                 
         return res[::-1]
