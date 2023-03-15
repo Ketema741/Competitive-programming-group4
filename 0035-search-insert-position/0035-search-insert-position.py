@@ -1,7 +1,7 @@
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
        
-        left, right = 0, len(nums)
+        left, right = 0, len(nums) # not -1 target would be inserted at the end
         
         while left < right:
             mid = left + (right - left)//2
