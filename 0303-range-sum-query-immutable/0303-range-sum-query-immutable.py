@@ -8,7 +8,6 @@ class NumArray:
             self.prefix_sum[i] += self.prefix_sum[i-1]
         self.prefix_sum.append(self.prefix_sum[-1])
             
-        print(self.prefix_sum)
     def sumRange(self, left: int, right: int) -> int:
         return self.prefix_sum[right+1] - self.prefix_sum[left]
 
