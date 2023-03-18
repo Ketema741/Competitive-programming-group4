@@ -20,5 +20,3 @@ class Solution:
         left.next = left.next.next
       
         return dummy.next
-            
-        
