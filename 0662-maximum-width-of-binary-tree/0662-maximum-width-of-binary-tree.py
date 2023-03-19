@@ -4,21 +4,35 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        queue = [(root, 1, 1)]
+        if not root:
+            return 0
         
-        cur_depth = left = width = 0
+        queue = deque([(root, 0)])
+        max_width = 1
         
-        for node, depth, pos in queue:
-            if node:
-                queue.append((node.left, depth+1, pos*2))
-                queue.append((node.right, depth+1, pos*2 + 1))
+        while queue:
+            level_size = len(queue)
+            level_start = level_end = 0
+            
+            for i in range(level_size):
+                node, pos = queue.popleft()
                 
-                if cur_depth != depth:
-                    cur_depth = depth
-                    left = pos
+                if i == 0:
+                    level_start = pos
                 
-                width = max(pos - left + 1, width)
-
-        return width
+                if i == level_size - 1:
+                    level_end = pos
+                
+                if node.left:
+                    queue.append((node.left, pos*2))
+                    
+                if node.right:
+                    queue.append((node.right, pos*2 + 1))
+            
+            width = level_end - level_start + 1
+            max_width = max(max_width, width)
+        
+        return max_width
