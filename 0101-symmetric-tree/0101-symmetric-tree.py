@@ -17,8 +17,7 @@ class Solution:
             left = isSameTree(root1.left, root2.right)
             right = isSameTree(root1.right, root2.left)
 
-            return  left and right
+            return left and right
         
-        if not root.left and not root.right:
-            return True
+    
         return isSameTree(root.left, root.right)
