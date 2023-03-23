@@ -6,10 +6,12 @@ class Solution:
                 res.append(comb.copy())
                 return
             
-            for i in range(start, n+1):
-                comb.append(i)
-                backtrack(i+1, comb)
-                comb.pop()
-                
+            if start > n:
+                return
+
+            backtrack(start+1, comb + [start])
+            backtrack(start+1, comb)
+
+
         backtrack(1, [])
         return res
