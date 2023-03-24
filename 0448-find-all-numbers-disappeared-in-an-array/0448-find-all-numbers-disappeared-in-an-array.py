@@ -1,7 +1,6 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         res = []
-        
         for num in nums:
             indx = abs(num) - 1
             nums[indx] = -1*abs(nums[indx])
