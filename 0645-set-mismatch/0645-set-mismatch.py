@@ -13,7 +13,5 @@ class Solution:
                 
         for i in range(len(nums)):
             if nums[i] != i + 1:
-                duplicate = nums[i]
-                missing = i + 1
+                return [nums[i], i + 1]
             
-        return [duplicate, missing]
