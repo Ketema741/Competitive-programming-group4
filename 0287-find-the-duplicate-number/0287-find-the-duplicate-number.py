@@ -1,17 +1,16 @@
 class Solution:
     def findDuplicate(self, nums):
-        # Find the intersection point of the two runners.
-        tortoise = hare = nums[0]
+        fast = slow = nums[0]
+        
         while True:
-            tortoise = nums[tortoise]
-            hare = nums[nums[hare]]
-            if tortoise == hare:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if fast == slow:
                 break
+                
+        slow = nums[0]
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
         
-        # Find the "entrance" to the cycle.
-        tortoise = nums[0]
-        while tortoise != hare:
-            tortoise = nums[tortoise]
-            hare = nums[hare]
-        
-        return hare
+        return slow
