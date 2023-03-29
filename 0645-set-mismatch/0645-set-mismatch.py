@@ -1,12 +1,18 @@
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        arr = [0] * (len(nums) + 1)
-        dup, missing = -1, 1
-        for i in range(len(nums)):
-            arr[nums[i]] += 1
-        for i in range(1, len(arr)):
-            if arr[i] == 0:
-                missing = i
-            elif arr[i] == 2:
-                dup = i
-        return [dup, missing]
+        set_error = [0]*len(nums)
+        duplicate, missing = -1, 0
+        
+        for num in nums:
+            set_error[num-1] += 1
+        
+        for i in range(len(set_error)):
+            if set_error[i] == 2:
+                duplicate = i+1
+                
+            if set_error[i] == 0:
+                missing = i+1
+                
+        return [duplicate, missing]
+        
+        
