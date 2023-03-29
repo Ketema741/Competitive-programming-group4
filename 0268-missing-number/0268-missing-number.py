@@ -1,17 +1,15 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        res = [-1] * (max(nums)+1)
-        start = 0
-        
-        while start < len(nums):
-            res[nums[start]] = nums[start] 
-            start += 1
-            
         i = 0
-        while i < len(res):
-            if res[i] == -1:
+        while i < len(nums):
+            j = nums[i]
+            if j < len(nums) and nums[i] != nums[j]:
+                nums[i], nums[j] = nums[j], nums[i]
+            else:
+                i += 1
+                
+        for i in range(len(nums)):
+            if nums[i] != i:
                 return i
             
-            i += 1
-            
-        return i
+        return len(nums)
