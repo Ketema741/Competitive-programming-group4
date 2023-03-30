@@ -1,21 +1,5 @@
 class Solution:
     def findDuplicate(self, nums):
-#         fast = slow = nums[0]
-        
-#         while True:
-#             slow = nums[slow]
-#             fast = nums[nums[fast]]
-#             if fast == slow:
-#                 break
-                
-#         slow = nums[0]
-#         while slow != fast:
-#             slow = nums[slow]
-#             fast = nums[fast]
-        
-#         return slow
-
-        res = []
         i = 0
         while i < len(nums):
             j = nums[i] - 1
@@ -28,3 +12,23 @@ class Solution:
             if nums[i] != i + 1:
                 return nums[i]
             
+
+            
+            
+"""
+    fast = slow = nums[0]
+        
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if fast == slow:
+                break
+                
+        slow = nums[0]
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+        
+        return slow
+
+"""
