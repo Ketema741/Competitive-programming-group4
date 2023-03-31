@@ -1,5 +1,16 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
+        res = nums[0] ^ 0
+    
+        for i in range(1, len(nums)):
+            res = res ^ nums[i] ^ i
+            
+        return res^len(nums)
+    
+    
+    
+    """
+        CYCLIC SORT
         i = 0
         while i < len(nums):
             j = nums[i]
@@ -13,3 +24,18 @@ class Solution:
                 return i
             
         return len(nums)
+        
+       BIT MANIPULATION
+        res = nums[0] ^ 0
+        for i in range(1, len(nums)):
+            res = res ^ nums[i] ^ i
+            
+        return res^len(nums)
+        
+        MATHS
+        res = len(nums)
+
+        for i in range(len(nums)):
+            res += i - nums[i]
+        return res
+    """
