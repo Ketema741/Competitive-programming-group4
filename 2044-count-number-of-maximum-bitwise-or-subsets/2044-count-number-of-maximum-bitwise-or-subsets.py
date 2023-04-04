@@ -18,7 +18,6 @@ class Solution:
                 new_OR = OR | nums[i]
                 backtrack(new_OR, i + 1)
                 
-        for i in range(len(nums)):
-            backtrack(nums[i], i + 1)
+        backtrack(0, 0)
             
         return count
