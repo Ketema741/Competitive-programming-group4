@@ -2,18 +2,18 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
         
-        if len(nums) == 1:
-            return [nums[:]]
+        def permutation(temp, nums):
+            if len(temp) == len(nums):
+                res.append(temp[:])
+                return
+            
+            
+            for num in nums:
+                if num not in temp :
+                    temp.append(num)
+                    permutation(temp, nums)
+                    temp.pop()
+                    
+        permutation([], nums)
         
-        for i in range(len(nums)):
-            n = nums.pop(0)
-            
-            perms = self.permute(nums)
-            
-            for perm in perms:
-                perm.append(n)
-                
-            res.extend(perms)
-            nums.append(n)
-            
         return res
