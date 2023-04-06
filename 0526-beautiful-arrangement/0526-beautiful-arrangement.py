@@ -1,19 +1,20 @@
 class Solution:
     def countArrangement(self, N: int) -> int:
-        self.count = 0
-        nums = [i for i in range(1, N+1)]
-        self.permute(nums, 0)
-        return self.count
-    
-    def permute(self, nums: List[int], l: int) -> None:
-        if l == len(nums):
-            self.count += 1
-            return
+        count = 0
+        visited = [False] * (N + 1)
         
-        for i in range(l, len(nums)):
-            nums[l], nums[i] = nums[i], nums[l]
+        def backtrack(N, pos, visited):
+            nonlocal count
             
-            if nums[l] % (l+1) == 0 or (l+1) % nums[l] == 0:
-                self.permute(nums, l+1)
-                
-            nums[l], nums[i] = nums[i], nums[l]
+            if pos > N:
+                count += 1
+
+            for i in range(1, N+1):
+                if not visited[i] and (pos % i == 0 or i % pos == 0):
+                    visited[i] = True # choose 
+                    backtrack(N, pos+1, visited) # explore 
+                    visited[i] = False # unchooose
+
+        backtrack(N, 1, visited)
+        
+        return count
