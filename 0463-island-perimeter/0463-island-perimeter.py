@@ -1,6 +1,5 @@
 class Solution:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
-        count = 0
         directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
         visited = [[0 for i in range(len(grid[0]))] for j in range(len(grid))]
         
@@ -14,25 +13,23 @@ class Solution:
                         return (row, col)
         
         def dfs(grid, visited, row, col):
-            nonlocal count
+            count = 0
+            if not inbound(row, col) or grid[row][col] == 0:
+                return 1
+                
+            if visited[row][col]:
+                return 0
             
             visited[row][col] = True
             
-           
             for row_change, col_change in directions:
                 new_row = row + row_change
                 new_col = col + col_change
                 
-                if inbound(new_row, new_col):
-                    if not visited[new_row][new_col] and  grid[new_row][new_col] == 1:
-                        dfs(grid, visited, new_row, new_col)
+                count += dfs(grid, visited, new_row, new_col)
                         
-                if not inbound(new_row, new_col) or grid[new_row][new_col] == 0:
-                    count += 1
-        
+            return count
+  
         start_row, start_col = startingPoint(grid)
         
-        dfs(grid, visited, start_row, start_col)
-        
-        return count
-                    
+        return dfs(grid, visited, start_row, start_col)                    
