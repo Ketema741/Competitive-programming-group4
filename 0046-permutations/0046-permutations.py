@@ -3,16 +3,13 @@ class Solution:
         res = []
         
         def permutation(temp, nums):
-            if len(temp) == len(nums):
+            if len(nums) == 0:
                 res.append(temp[:])
                 return
             
             
-            for num in nums:
-                if num not in temp :
-                    temp.append(num)
-                    permutation(temp, nums)
-                    temp.pop()
+            for i in range(len(nums)):
+                permutation(temp + [nums[i]], nums[:i] + nums[i+1:]) #explore
                     
         permutation([], nums)
         
