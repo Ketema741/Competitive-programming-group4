@@ -9,16 +9,16 @@ class Node:
 
 class Solution:
     def maxDepth(self, root: 'Node') -> int:
-
         
         def dfs(node):
             if not node:
                 return 0
-            nodes_len = [0]
+            
+            max_child_height = 0
             
             for i in range(len(node.children)):
-                nodes_len.append(dfs(node.children[i]))
+                max_child_height = max(max_child_height, dfs(node.children[i]))
             
-            
-            return  1 + max(nodes_len)
+            return  1 + max_child_height
+        
         return dfs(root)
