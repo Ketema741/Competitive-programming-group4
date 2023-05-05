@@ -20,6 +20,7 @@ for col in range(n):
 
     if 1 not in column:
         source.append(col+1)  
+        
 source.sort()
 sink.sort()          
 print(len(source),*source)        
