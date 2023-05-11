@@ -40,7 +40,7 @@ class Solution:
                 
 
             for child in graph[node]:
-                if child not in visited:
+                if child not in visited and distance < k:
                     queue.append((child, distance + 1))
                     visited.add(node)
 
