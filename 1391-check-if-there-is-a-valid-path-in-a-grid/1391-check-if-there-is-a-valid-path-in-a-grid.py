@@ -1,38 +1,37 @@
-class Solution:
-    def hasValidPath(self, grid: List[List[int]]) -> bool:
-        directions = {1: [(0,-1),(0,1)],
-                      2: [(-1,0),(1,0)],
-                      3: [(0,-1),(1,0)],
-                      4: [(0,1),(1,0)],
-                      5: [(0,-1),(-1,0)],
-                      6: [(0,1),(-1,0)]
-                     }
-        
-        visited = set()
-        
-        dest = (len(grid) - 1,  len(grid[0]) - 1)
-        
+class UnionFind:
+    def __init__(self, n):
+        self.leaders = [i for i in range(n)]
+        self.ranks = [1 for i in range(n)]
+    
+    def find(self, x):
+        if self.leaders[x] != x:
+            self.leaders[x] = self.find(self.leaders[x])
+        return self.leaders[x]
 
-        def inbound(row, col):
-            return (0 <= row < len(grid) and 0 <= col < len(grid[0]))
-
-        def dfs(row, col):
-            if (row, col) == dest:
-                return True
-            
-            visited.add((row, col))
-            
-            moves = directions[grid[row][col]]
-            
-            for row_change, col_change in moves:
-                new_row = row + row_change
-                new_col = col + col_change
-                
-                if inbound(new_row, new_col) and (new_row, new_col) not in visited: 
-                    if (-row_change, -col_change) in directions[grid[new_row][new_col]]:
-                        if dfs(new_row, new_col):
-                            return True
-                        
+    def union(self, x, y):
+        p = self.find(x)
+        q = self.find(y)
+        if p == q: 
             return False
-        
-        return dfs(0, 0)
+        if self.ranks[p] < self.ranks[q]:
+            self.leaders[p] = q
+        elif self.ranks[p] > self.ranks[q]:
+            self.leaders[q] = p
+        else:        
+            self.leaders[q] = p
+            self.ranks[p] += 1
+        return True
+    
+class Solution:
+    def hasValidPath(self, grid):
+        m, n = len(grid), len(grid[0])
+        right = {1: {1, 3, 5}, 2: {}, 3: {}, 4: {1, 3, 5}, 5: {}, 6: {1, 3, 5}}
+        down = {1: {}, 2: {2, 5, 6}, 3: {2, 5, 6}, 4: {2, 5, 6}, 5: {}, 6: {}}
+        uf = UnionFind(m * n)
+        for x in range(m):
+            for y in range(n):
+                if y + 1 <= n - 1 and grid[x][y + 1] in right[grid[x][y]]:
+                    uf.union(x * n + y, x * n + y + 1)
+                if x + 1 <= m - 1 and grid[x + 1][y] in down[grid[x][y]]:
+                    uf.union(x * n + y, (x + 1) * n + y)
+        return uf.find(0) == uf.find(m * n - 1)
