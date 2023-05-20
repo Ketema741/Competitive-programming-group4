@@ -30,7 +30,7 @@ class Solution:
             dsu.union_set(road[0], road[1])
 
         for road in roads:
-            if dsu.find(1) == dsu.find(road[0]):
+            if dsu.find(1) == dsu.find(road[1]):
                 answer = min(answer, road[2])
 
         return answer
