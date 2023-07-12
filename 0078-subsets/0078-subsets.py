@@ -3,16 +3,14 @@ class Solution:
         res = []
         
         def backtrack(indx, subset):
-            if indx == len(nums):
-                res.append(subset[:])
+            if indx >= len(nums):
+                res.append(subset.copy())
                 return
             
-            res.append(subset[:])
-            
-            for i in range(indx, len(nums)):
-                subset.append(nums[i])      # choose
-                backtrack(i+1, subset)      # explore
-                subset.pop()                # unchoose
+            subset.append(nums[indx])       # choose
+            backtrack(indx+1, subset)       # explore
+            subset.pop()                    # unchoose
+            backtrack(indx+1, subset)       # explore
                 
         backtrack(0, [])
         
