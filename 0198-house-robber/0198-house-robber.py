@@ -8,6 +8,7 @@ class Solution:
             
             if n >= len(nums):
                 return 0
+            
             if n in memo:
                 return memo[n]
             
@@ -15,4 +16,5 @@ class Solution:
             memo[n] = money
             
             return memo[n]
+        
         return dp(0)
