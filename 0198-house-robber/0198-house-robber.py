@@ -1,7 +1,5 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        n = len(nums) - 1
-        
         memo = defaultdict(int)
         
         def dp(n):
@@ -13,8 +11,8 @@ class Solution:
                 return max(nums[0], nums[1])
             
             if n not in memo:
-                memo[n] = max(dp(n-1), dp(n-2) + nums[n])
+                memo[n] = max(dp(n - 1), dp(n - 2) + nums[n])
             
             return memo[n]
         
-        return dp(n)
+        return dp(len(nums) - 1)
