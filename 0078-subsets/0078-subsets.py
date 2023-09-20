@@ -7,9 +7,12 @@ class Solution:
                 res.append(subset.copy())
                 return
             
-            subset.append(nums[indx])       # choose
+            # include nums[i]
+            subset.append(nums[indx])      
             backtrack(indx+1, subset)       # explore
-            subset.pop()                    # unchoose
+            
+            # not include nums[i]
+            subset.pop()                   
             backtrack(indx+1, subset)       # explore
                 
         backtrack(0, [])
