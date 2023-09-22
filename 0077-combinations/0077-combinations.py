@@ -6,18 +6,36 @@ class Solution:
                 res.append(comb.copy())
                 return
             
-            if start > n:
+            if start > n or len(comb) > k:
                 return
             
-            comb.append(start) # choose
+            # inclue nums at i
+            comb.append(start)
             backtrack(start + 1, comb ) #  then explore
             
-            comb.pop() # unchoose
+            # not include nums at i
+            comb.pop()
             backtrack(start + 1, comb) #  then explore
 
         backtrack(1, [])
         return res
     
+    
+    """
+    subset question solution:
+        def backtrack(indx, subset):
+            if indx >= len(nums):
+                res.append(subset.copy())
+                return
+            
+            # include nums[i]
+            subset.append(nums[indx])      
+            backtrack(indx+1, subset)       # explore
+            
+            # not include nums[i]
+            subset.pop()                   
+            backtrack(indx+1, subset)       # explore
+    """
     
     
     """
