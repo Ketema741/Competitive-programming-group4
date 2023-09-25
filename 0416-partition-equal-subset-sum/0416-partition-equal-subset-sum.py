@@ -5,8 +5,8 @@ class Solution:
         if sum(nums) % 2 != 0:
             return False
         
-        target = sum(nums)//2
-        memo = defaultdict(int)
+        target = sum(nums) // 2
+        memo = {}
         
         def dp(target, i):
             if i == len(nums):
