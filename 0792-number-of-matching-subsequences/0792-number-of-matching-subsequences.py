@@ -23,19 +23,29 @@ class Solution:
         
         for word in words:
             self.addWord(word)
+            
+        def find_indx(ch, i):
+            
+            for j in range(i, len(s)):
+                if s[j] == ch:
+                    return j
+            return -1
+        
         
         def dfs(i, root):
             nonlocal count
+            
             if not root:
                 return 
             
             count += root.count
             
             for char in root.children:
-                for j in range(i, len(s)):
-                    if s[j] == char:
-                        dfs(j + 1, root.children[char])
-                        break
-        dfs(0, curr)
+                indx = find_indx(char, i + 1)
+                
+                if indx != -1:
+                     dfs(indx, root.children[char])
+                
+        dfs(-1, curr)
         
-        return count
+        return count 
