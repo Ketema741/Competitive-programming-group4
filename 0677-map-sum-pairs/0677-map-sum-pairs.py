@@ -28,6 +28,7 @@ class MapSum:
         for char in prefix:
             if char not in node.children:
                 return 0
+            
             node = node.children[char]
             
         return node.score
