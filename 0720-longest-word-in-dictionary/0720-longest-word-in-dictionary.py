@@ -9,10 +9,13 @@ class Trie:
 
     def insert(self, word):
         node = self.root
+        
         for char in word:
             if char not in node.children:
                 node.children[char] = TrieNode()
+                
             node = node.children[char]
+            
         node.end_of_word = True
 
 class Solution:
@@ -32,6 +35,7 @@ class Solution:
             valid_word = True
             for char in word:
                 curr = curr.children[char]
+                
                 if not curr.end_of_word:
                     valid_word = False
                     break
