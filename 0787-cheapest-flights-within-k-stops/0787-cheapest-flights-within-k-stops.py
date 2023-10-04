@@ -11,11 +11,12 @@ class Solution:
         
         while minHeap:
             stops, total_cost, cur = heappop(minHeap)
+            neighbours = graph[cur]
             
-            for node, cost in graph[cur]:
-                if prices[node] > total_cost + cost and stops <= k: 
-                    prices[node] = total_cost + cost
+            for neighbour, cost in neighbours:
+                if prices[neighbour] > total_cost + cost and stops <= k: 
+                    prices[neighbour] = total_cost + cost
                     
-                    heappush(minHeap, (stops + 1, prices[node], node))
+                    heappush(minHeap, (stops + 1, prices[neighbour], neighbour))
 
         return prices[dst] if prices[dst] != float('inf') else -1
