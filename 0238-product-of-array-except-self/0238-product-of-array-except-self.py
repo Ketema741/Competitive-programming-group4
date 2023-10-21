@@ -8,7 +8,7 @@ class Solution:
             prefix_mult *= num
         
         suffix_mult = 1
-        for indx in range(len(nums)-1,-1,-1):
+        for indx in range(len(nums) - 1, -1, -1):
             res[indx] *= suffix_mult 
             suffix_mult *= nums[indx]
             
