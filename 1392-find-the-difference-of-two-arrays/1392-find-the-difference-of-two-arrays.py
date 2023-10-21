@@ -6,14 +6,13 @@ class Solution:
             hash1.add(num)
 
         for num in nums2:
+            if num not in hash1:
+                res2.add(num)
             hash2.add(num)
             
         for num in nums1:
             if num not in hash2:
                 res1.add(num)
 
-        for num in nums2:
-            if num not in hash1:
-                res2.add(num)
 
         return [list(res1), list(res2)]
