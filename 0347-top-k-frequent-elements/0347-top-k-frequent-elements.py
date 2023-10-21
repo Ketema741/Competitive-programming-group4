@@ -14,4 +14,4 @@ class Solution:
         while heap:
             result.append(heapq.heappop(heap)[1])
 
-        return result[::-1]
+        return result
