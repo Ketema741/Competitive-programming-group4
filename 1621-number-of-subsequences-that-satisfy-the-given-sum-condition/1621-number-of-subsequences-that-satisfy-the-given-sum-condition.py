@@ -12,7 +12,7 @@ class Solution:
                 right -= 1
 
             if left <= right:
-                res +=  (1<<(right - left))
+                res +=  (1<<(right - left)) # x << n == x*(2**n)
                 res %= mod
 
         return res
