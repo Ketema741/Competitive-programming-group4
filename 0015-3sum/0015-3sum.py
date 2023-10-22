@@ -20,4 +20,4 @@ class Solution:
                     res.add((num, nums[left], nums[right]))
                     left += 1
                     
-        return list(res)
+        return [list(triblets) for triblets in res]
