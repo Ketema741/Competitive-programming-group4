@@ -1,6 +1,6 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = set()
+        res = []
         nums.sort()
 
         for indx, num in enumerate(nums):
@@ -17,7 +17,9 @@ class Solution:
                 elif three_sum < 0:
                     left += 1
                 else:
-                    res.add((num, nums[left], nums[right]))
+                    res.append([num, nums[left], nums[right]])
                     left += 1
+                    while left < right and nums[left] == nums[left-1]:
+                        left += 1
                     
-        return [list(triblets) for triblets in res]
+        return res
