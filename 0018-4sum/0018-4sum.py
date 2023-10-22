@@ -1,8 +1,9 @@
 class Solution:
     def fourSum(self, nums, target):
-        def findNsum(l, r, target, N, result, results):
-            if r-l+1 < N or N < 2 or target < nums[l]*N or target > nums[r]*N:  
+        def findNsum(l, r, target, N, result):
+            if r - l + 1 < N or N < 2 or target < nums[l]*N or target > nums[r]*N:  
                 return
+                
             if N == 2: 
                 while l < r:
                     s = nums[l] + nums[r]
@@ -18,9 +19,10 @@ class Solution:
             else:
                 for i in range(l, r+1):
                     if i == l or (i > l and nums[i-1] != nums[i]):
-                        findNsum(i+1, r, target-nums[i], N-1, result+[nums[i]], results)
+                        findNsum(i+1, r, target-nums[i], N-1, result+[nums[i]])
 
         nums.sort()
         results = []
-        findNsum(0, len(nums)-1, target, 4, [], results)
+        findNsum(0, len(nums) - 1, target, 4, [])
+
         return results
