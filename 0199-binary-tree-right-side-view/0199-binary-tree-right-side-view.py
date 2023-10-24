@@ -7,25 +7,20 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         res = []
-        queue = deque([root])
+        max_level = -1
+        def dfs(root, level):
+            nonlocal max_level
 
-        if not root:
-            return res
-        
-        
-        while queue:
-            temp = []
-            for i in range(len(queue)):
-                curr = queue.popleft()
-                temp.append(curr.val)
-
-                if curr.left:
-                    queue.append(curr.left)
-
-                if curr.right:
-                    queue.append(curr.right)
+            if not root:
+                return
             
-            res.append(temp[-1])
-            
+            if level > max_level:
+                res.append(root.val)
+
+            max_level = max(max_level, level)
+
+            dfs(root.right, 1 + level)
+            dfs(root.left, 1 + level)
+        dfs(root, 0)
         
         return res
