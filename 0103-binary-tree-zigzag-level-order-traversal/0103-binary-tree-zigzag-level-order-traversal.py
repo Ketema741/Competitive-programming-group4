@@ -13,19 +13,19 @@ class Solution:
             
         level = 0  
         while queue:
-            width = len(queue)
-            
             temp = []
-            for i in range(width):
+
+            for _ in range(len(queue)):
                 node = queue.popleft()
                 temp.append(node.val)
+                
                 if node.left:
                     queue.append(node.left)
                     
                 if node.right:
                     queue.append(node.right)
                     
-            if level%2 != 0:
+            if level % 2 != 0:
                 res.append(temp[::-1])
             else:
                 res.append(temp)
@@ -33,5 +33,3 @@ class Solution:
             level += 1
             
         return res
-                    
-            
