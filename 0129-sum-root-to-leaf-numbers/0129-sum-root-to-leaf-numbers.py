@@ -1,21 +1,13 @@
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        
-        res = []
-        
-        def dfs(node, path):
+        def dfs(node, num):
+            if not node:
+                return 0
+
+            num = num * 10  + node.val
             if not node.left and not node.right:
-                string = ''.join(path) + str(node.val)
-                res.append(string)
-                return
+                return num
+
+            return dfs(node.left, num) + dfs(node.right, num)
             
-            if node.left:
-                dfs(node.left, path + [str(node.val)])
-            if node.right:
-                dfs(node.right, path + [str(node.val)])
-            
-        dfs(root, [])
-        
-        return sum([int(num) for num in res])
+        return dfs(root, 0)
