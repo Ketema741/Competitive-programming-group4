@@ -7,6 +7,7 @@ class MyStack:
 
     def push(self, x: int) -> None:
         self.queue.append(x)
+        
         # Rearrange the elements so that the recently pushed element is at the front
         for _ in range(len(self.queue) - 1):
             self.queue.append(self.queue.popleft())
