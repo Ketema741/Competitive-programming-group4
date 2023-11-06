@@ -10,4 +10,4 @@ class NumArray:
     def sumRange(self, left: int, right: int) -> int:
         r = self.prefix[right] 
         l = self.prefix[left - 1] if left > 0 else 0
-        return r - l
+        return r - l 
