@@ -5,11 +5,13 @@ class Solution:
 
         while left <= right:
             mid = left + (right - left)//2
-            res = min(res, nums[mid])
             
+            res = min(res, nums[mid])
+
             if nums[left] > nums[right] and nums[mid] > nums[right]:
                 left = mid + 1
             else:
                 right = mid - 1
 
         return res
+        
