@@ -16,4 +16,3 @@ class Solution:
         flip = self.flipEquiv(r1.left, r2.right) and self.flipEquiv(r1.right, r2.left)
 
         return noFlip or flip
-    
