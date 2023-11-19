@@ -4,7 +4,7 @@ stack = []
 x = 0
 
 for i in range(n):
-    commands = input().strip()
+    commands = input()
     if commands == 'add':
         x += 1 
     elif "f" == commands[0]:
