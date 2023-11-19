@@ -8,22 +8,22 @@ def main():
 
         colors[node] = color
 
-        for neighbor in adj_list[node]:
-            if not dfs(neighbor, 1 - color):
+        for child in adj_list[node]:
+            if not dfs(child, 1 - color):
                 return False
 
         return True
 
     while True:
-        n = int(input())
-        if n == 0:
+        nodes = int(input())
+        if nodes == 0:
             break
 
-        l = int(input())
+        edges = int(input())
         adj_list = defaultdict(list)
-        colors = [-1] * n
+        colors = [-1] * nodes
 
-        for i in range(l):
+        for _ in range(edges):
             node1, node2 = map(int, input().split())
             adj_list[node1 - 1].append(node2 - 1)
             adj_list[node2 - 1].append(node1 - 1)
