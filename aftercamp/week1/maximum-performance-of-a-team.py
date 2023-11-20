@@ -16,3 +16,5 @@ class Solution:
             heapq.heappush(min_heap, spd)
         
         return res % mod
+
+        
