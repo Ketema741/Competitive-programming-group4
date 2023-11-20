@@ -13,4 +13,3 @@ class Solution(object):
             res.append(coord)
 
         return res
-        
