@@ -6,7 +6,7 @@ class Solution(object):
             x, y = coord
             points[i] = (x**2 + y**2, [x, y])
 
-        heapq.heapify(points)
+        heapq.heapify(points) # O(N)
 
         while len(res) < k:
             distance, coord = heapq.heappop(points)
