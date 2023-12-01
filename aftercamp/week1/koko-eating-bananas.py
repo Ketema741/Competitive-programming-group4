@@ -10,7 +10,7 @@ class Solution:
         left, right = 1, max(piles)
         
         while left <= right:
-            mid = (left + right) // 2
+            mid = left + (right - left) // 2
             
             if canEatAll(mid, h):
                 right = mid - 1
