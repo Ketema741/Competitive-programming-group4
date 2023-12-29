@@ -18,7 +18,7 @@ class Robot:
         for _ in range(num):
             nx, ny = self.x + self.directions[self.dir][0], self.y  + self.directions[self.dir][1]
 
-            while not (0 <= nx < self.w and 0 <= ny < self.h):
+            if not (0 <= nx < self.w and 0 <= ny < self.h):
                 self.dir = (self.dir + 1)%4
                 nx, ny = self.x + self.directions[self.dir][0], self.y + self.directions[self.dir][1]
 
